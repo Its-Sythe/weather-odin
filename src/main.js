@@ -1,3 +1,5 @@
-import { weather } from './app/logic.js'
+import './style.css'
+import { ui } from './app/ui.js'
 
-weather.getWeatherData('nairobi')
+
+ui.render();
