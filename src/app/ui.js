@@ -1,3 +1,4 @@
+import { weather } from './logic.js'
 export const ui = (function() {
     function render() {
         loadMainPageContents();
@@ -11,9 +12,8 @@ export const ui = (function() {
 
             if (e.target.id == "submit-location") {
                 let result = validateForm()
-            
                 if (result != undefined || result != null) {
-                    //Todo
+                    displayWeather(weather.getWeatherData(result));
                 }
             }
         })
@@ -78,10 +78,16 @@ export const ui = (function() {
             location.setCustomValidity("Please enter a location") 
             location.reportValidity()
             return;
+        } else {
+            location.setCustomValidity("")
+            return location.value
         }
+    }
 
-        location.setCustomValidity("")
-        return location.value
+    function displayWeather(weather) {
+        document.querySelector("#weather-name").textContent = weather[0]        
+        document.querySelector("#date").textContent = weather[1]
+        document.querySelector('#current-temp').textContent = weather[2]
     }
 
     return { 
