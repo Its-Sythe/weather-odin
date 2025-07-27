@@ -6,8 +6,25 @@
         <title>Weather App</title>
     </head>
     <body>
-         <section class='nav'></section> 
-         <main class='main-content'></main>
-         <form class="form-modal" name="weather-form" method="get" action="#"></form>
+         <section class='nav'>
+            <p class="title">Tenki</p>
+            <div class="temp-switch">
+                <span class="toggle-degrees">Degrees</span>
+                <span class="toggle-fahrenheight">Fahrenheight</span>
+            </div>
+        </section> 
+         <main class='main-content'>
+            <div class="weather-icon">
+            </div>
+            <p class="weather"></p>    
+            <p class="current-temp"></p>
+            <p class="date"></p>
+            <p class="weather-location"></p>
+        </main>
+         <form class="form-modal" name="weather-form" method="get" action="#">
+            <label for="location"></label>
+            <input type="text" name="location" id="location" placeholder="Enter location" required>
+            <button type="submit" id="submit-location">Get Weather</button>
+        </form>
     </body>
 </html>

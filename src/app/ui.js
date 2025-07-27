@@ -1,81 +1,35 @@
 import { weather } from './logic.js'
+
 export const ui = (function() {
     function render() {
-        loadMainPageContents();
-        createWeatherForm();
         handleClicks()
     }
 
     function handleClicks() {
-        document.querySelector(".form-modal").addEventListener("click", (e) => {
+        document.querySelector('#submit-location').addEventListener("click", (e) => {
             e.preventDefault();
+            let result = validateForm()
+            displayWeatherData(weather.getWeatherData(result))
+        })
 
-            if (e.target.id == "submit-location") {
-                let result = validateForm()
-                if (result != undefined || result != null) {
-                    displayWeather(weather.getWeatherData(result));
-                }
+        document.querySelector(".temp-switch").addEventListener("click", (e) => {
+            e.preventDefault();
+            let tgt = e.target;
+            
+            if (e.target.className == "toggle-degrees") {
+
+            } else if (e.target.className == "toggle-fahreheight") {
+
             }
         })
     }
 
-    function createWeatherForm() {
-        const formModal = document.querySelector(".form-modal")
-        const locationInput = document.createElement("input");
-        locationInput.type = "text"
-        locationInput.required = true
-        locationInput.placeholder = "Enter city"
-        locationInput.id = "form-location"
-        locationInput.minLength = "3"
-        locationInput.maxLength = "20"
-
-        const submitLocation = document.createElement("button");
-        submitLocation.id = "submit-location";
-        submitLocation.textContent = "Get Weather"
-
-        formModal.append(locationInput, submitLocation);
-        return formModal
-    }
-
-    function loadMainPageContents() {
-        const navigationContainer = document.querySelector(".nav");
-        const mainContentContainer = document.querySelector(".main-content");
-        
-        const appTitle = document.createElement("p");
-        appTitle.class = "app-title"
-        appTitle.textContent = "Tenki"
-        
-        const switchToggleContainer = document.createElement("div")
-        const degreeCelcius = document.createElement("li");
-        degreeCelcius.id = "degree-temp"
-        const fahrenheight = document.createElement("li");
-        fahrenheight.id = "fahrenheight-temp"
-
-        switchToggleContainer.append(degreeCelcius, fahrenheight)
-
-        navigationContainer.append(appTitle, switchToggleContainer)
-
-
-        const weatherIcon = document.createElement("div");
-        weatherIcon.id = "weather-icon"
-
-        const weatherName = document.createElement("p");
-        weatherName.id = "weather-name"
-
-        const currentTemp = document.createElement("p");
-        currentTemp.id = "current-temp"
-
-        const date = document.createElement("p");
-        date.id = "date"
-
-        mainContentContainer.append(weatherIcon, weatherName, currentTemp, date)
-    }
-
     function validateForm() {
-        const location = document.querySelector("#form-location")
-
+        const form = document.forms["weather-form"];
+        const location = form["location"]
+        
         if (location.checkValidity() == false) {
-            location.setCustomValidity("Please enter a location") 
+            location.setCustomValidity("Please provide a location") 
             location.reportValidity()
             return;
         } else {
@@ -84,13 +38,33 @@ export const ui = (function() {
         }
     }
 
-    function displayWeather(weather) {
-        document.querySelector("#weather-name").textContent = weather[0]        
-        document.querySelector("#date").textContent = weather[1]
-        document.querySelector('#current-temp').textContent = weather[2]
+    async function displayWeatherData(data) {
+        data = await data
+        if (data != "Error") {
+            const weather = document.querySelector(".weather")
+            weather.textContent = data[0]
+            const currentTemp = document.querySelector('.current-temp')
+            currentTemp.textContent = data[1]
+            const currentDate = document.querySelector(".date")
+            currentDate.textContent = data[2]
+            const currentLocation = document.querySelector(".weather-location")
+            currentLocation.textContent = data[3]
+
+            document.forms["weather-form"].reset()
+        } else {
+            alert("Unknown location")
+        }
     }
 
-    return { 
+    async function convertToCelcius() {
+
+    }
+
+    async function convertToFahren() {
+
+    }
+
+    return {
         render
     }
 })()
