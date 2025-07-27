@@ -42,13 +42,13 @@ export const ui = (function() {
         data = await data
         if (data != "Error") {
             const weather = document.querySelector(".weather")
-            weather.textContent = data[0]
+            weather.textContent = "Weather: " + data[0]
             const currentTemp = document.querySelector('.current-temp')
-            currentTemp.textContent = data[1]
+            currentTemp.textContent = "Temp: " + data[1]
             const currentDate = document.querySelector(".date")
-            currentDate.textContent = data[2]
+            currentDate.textContent = "Date: " + data[2]
             const currentLocation = document.querySelector(".weather-location")
-            currentLocation.textContent = data[3]
+            currentLocation.textContent = "Location: " + data[3]
 
             document.forms["weather-form"].reset()
         } else {
