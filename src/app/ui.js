@@ -9,18 +9,7 @@ export const ui = (function() {
         document.querySelector('#submit-location').addEventListener("click", (e) => {
             e.preventDefault();
             let result = validateForm()
-            displayWeatherData(weather.getWeatherData(result))
-        })
-
-        document.querySelector(".temp-switch").addEventListener("click", (e) => {
-            e.preventDefault();
-            let tgt = e.target;
-            
-            if (e.target.className == "toggle-degrees") {
-
-            } else if (e.target.className == "toggle-fahreheight") {
-
-            }
+             displayWeatherData(weather.getWeatherData(result))
         })
     }
 
@@ -44,7 +33,7 @@ export const ui = (function() {
             const weather = document.querySelector(".weather")
             weather.textContent = "Weather: " + data[0]
             const currentTemp = document.querySelector('.current-temp')
-            currentTemp.textContent = "Temp: " + data[1]
+            currentTemp.textContent = "Temp: " + data[1] + " °F"
             const currentDate = document.querySelector(".date")
             currentDate.textContent = "Date: " + data[2]
             const currentLocation = document.querySelector(".weather-location")
@@ -54,14 +43,6 @@ export const ui = (function() {
         } else {
             alert("Unknown location")
         }
-    }
-
-    async function convertToCelcius() {
-
-    }
-
-    async function convertToFahren() {
-
     }
 
     return {
