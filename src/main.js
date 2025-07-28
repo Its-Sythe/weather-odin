@@ -1,5 +1,6 @@
-import './style.css'
-import { ui } from './app/ui.js'
+import "./style.css";
+import { ui } from "./app/ui.js";
 
-ui.render()
-
+window.addEventListener("load", () => {
+  ui.render();
+});

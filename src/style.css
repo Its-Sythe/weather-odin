@@ -1,74 +1,78 @@
 * {
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-image: linear-gradient(to top right, rgb(69, 125, 133), rgb(76, 132, 138), rgb(41, 84, 89));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: linear-gradient(
+    to top right,
+    rgb(69, 125, 133),
+    rgb(76, 132, 138),
+    rgb(41, 84, 89)
+  );
 }
 
 .content {
-    background: #0a0e2a;
-    padding: 20px;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    width: 550px;
-    height: max-content;
+  background: #0a0e2a;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 550px;
+  height: max-content;
 }
 
-
 .title {
-    color: #00cfff;
-    font-size: 2.5em;
-    font-weight: 900;
-    text-decoration: underline;
-    align-self: center;
+  color: #00cfff;
+  font-size: 2.5em;
+  font-weight: 900;
+  text-decoration: underline;
+  align-self: center;
 }
 
 .main-content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-content > p {
-    color: #00ffff;
-    font-size: 2em;
-    width: 450px;
-    padding: 10px;
+  color: #00ffff;
+  font-size: 2em;
+  width: 450px;
+  padding: 10px;
 }
 
 .form-modal {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-modal > input {
-    color: #aab0c5;
-    background: transparent;
-    padding: 10px;
-    border-radius: 12px;
-    border-color: #2a2f6b;
-    font-size: 1.5em;
+  color: #aab0c5;
+  background: transparent;
+  padding: 10px;
+  border-radius: 12px;
+  border-color: #2a2f6b;
+  font-size: 1.5em;
 }
 
 .form-modal > button {
-    color: #00ffff;
-    border-color: #00ffff;
-    background: transparent;
-    border-radius: 12px;
-    padding: 10px;
-    font-size: 1.5em;
+  color: #00ffff;
+  border-color: #00ffff;
+  background: transparent;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 1.5em;
 }
